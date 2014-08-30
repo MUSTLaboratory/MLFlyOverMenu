@@ -26,18 +26,6 @@ static CGFloat statusBarAdjustment( UIView* view )
     return adjustment;
 }
 
-static CGFloat navBarAdjustment( UIView *view, UINavigationBar *navBar )
-{
-    CGFloat adjustment = 0.0f;
-    CGRect viewFrame = [view convertRect:view.bounds toView:nil];
-    CGRect navBarFrame = navBar.frame;
-    
-    if ( CGRectIntersectsRect(viewFrame, navBarFrame) )
-        adjustment = fminf(navBarFrame.size.width, navBarFrame.size.height);
-    
-    return adjustment;
-}
-
 #pragma mark - Constants
 
 static const CGFloat MLFlyOverMenuControllerAnimationDuration = 0.25;
