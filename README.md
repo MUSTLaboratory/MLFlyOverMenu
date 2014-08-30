@@ -1,6 +1,6 @@
 # MLFlyOverMenu
 
-[![CI Status](http://img.shields.io/travis/Peter Rusanov/MLFlyOverMenu.svg?style=flat)](https://travis-ci.org/Peter Rusanov/MLFlyOverMenu)
+[![CI Status](http://img.shields.io/travis/MUSTLab/MLFlyOverMenu.svg?style=flat)](https://travis-ci.org/MUSTLab/MLFlyOverMenu)
 [![Version](https://img.shields.io/cocoapods/v/MLFlyOverMenu.svg?style=flat)](http://cocoadocs.org/docsets/MLFlyOverMenu)
 [![License](https://img.shields.io/cocoapods/l/MLFlyOverMenu.svg?style=flat)](http://cocoadocs.org/docsets/MLFlyOverMenu)
 [![Platform](https://img.shields.io/cocoapods/p/MLFlyOverMenu.svg?style=flat)](http://cocoadocs.org/docsets/MLFlyOverMenu)
@@ -20,7 +20,7 @@ it, simply add the following line to your Podfile:
 
 ## Author
 
-Peter Rusanov, peter.rusanov@gmail.com
+MUSTLab, peter.rusanov@gmail.com
 
 ## License
 

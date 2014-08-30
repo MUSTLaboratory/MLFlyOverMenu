@@ -3,7 +3,7 @@
 //  MLFlyOverMenu
 //
 //  Created by CocoaPods on 08/29/2014.
-//  Copyright (c) 2014 Peter Rusanov. All rights reserved.
+//  Copyright (c) 2014 MUSTLab. All rights reserved.
 //
 
 #import "MLAppDelegate.h"
