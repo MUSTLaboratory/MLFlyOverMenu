@@ -110,6 +110,10 @@ static const char kFlyOverMenuControllerContentHeightKey;
     
     self.direction = direction;
     
+    __weak MLFlyOverMenuController *weakSelf = self;
+    
+    self.contentViewController.flyOverMenuController = weakSelf;
+    
     [self setupContentView];
     
     [self placeContentViewToInitialPosition];
@@ -146,6 +150,9 @@ static const char kFlyOverMenuControllerContentHeightKey;
     {
         [self.contentView removeFromSuperview];
         self.contentView = nil;
+        
+        self.contentViewController.flyOverMenuController = nil;
+        self.contentViewController = nil;
     };
     
     void (^animations)() = ^()
@@ -421,7 +428,7 @@ NSString * const MLFlyOverMenuPresentSegueBottomIdentifier = @"ml_from_bottom";
 
 - (void)setFlyOverMenuController:(MLFlyOverMenuController *)flyOverMenuController
 {
-    objc_setAssociatedObject(self, &kFlyOverMenuControllerKey, flyOverMenuController, OBJC_ASSOCIATION_RETAIN);
+    objc_setAssociatedObject(self, &kFlyOverMenuControllerKey, flyOverMenuController, OBJC_ASSOCIATION_ASSIGN);
 }
 
 - (NSNumber *)contentWidthInFlyOverMenu
