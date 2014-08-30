@@ -10,22 +10,6 @@
 
 #import "MLFlyOverMenuController.h"
 
-#pragma mark - StatusBar Helper Function
-
-// computes the required offset adjustment due to the status bar for the passed in view,
-// it will return the statusBar height if view fully overlaps the statusBar, otherwise returns 0.0f
-static CGFloat statusBarAdjustment( UIView* view )
-{
-    CGFloat adjustment = 0.0f;
-    CGRect viewFrame = [view convertRect:view.bounds toView:nil];
-    CGRect statusBarFrame = [[UIApplication sharedApplication] statusBarFrame];
-    
-    if ( CGRectIntersectsRect(viewFrame, statusBarFrame) )
-        adjustment = fminf(statusBarFrame.size.width, statusBarFrame.size.height);
-    
-    return adjustment;
-}
-
 #pragma mark - Constants
 
 static const CGFloat MLFlyOverMenuControllerAnimationDuration = 0.25;
@@ -62,7 +46,7 @@ static const char kFlyOverMenuControllerContentHeightKey;
 + (instancetype)flyOverMenuControllerWithContentViewController:(UIViewController *)viewController
 {
     MLFlyOverMenuController *flyOverMenu = [self new];
- 
+    
     flyOverMenu.contentViewController = viewController;
     
     return flyOverMenu;
@@ -91,7 +75,7 @@ static const char kFlyOverMenuControllerContentHeightKey;
 
 - (void)setup
 {
-
+    
 }
 
 - (void)presentFlyOverMenuInViewController:(UIViewController *)viewController;
@@ -112,7 +96,7 @@ static const char kFlyOverMenuControllerContentHeightKey;
     
     if (self.aboveBars && ![presentingViewController isKindOfClass:UINavigationController.class]) {
         UINavigationController *navigationController = presentingViewController.navigationController;
-
+        
         if (navigationController) {
             presentingViewController = navigationController;
         }
@@ -121,11 +105,11 @@ static const char kFlyOverMenuControllerContentHeightKey;
     self.presentingViewController = presentingViewController;
     
     NSAssert(self.contentViewController != nil, @"content view controller is nil");
-
+    
     NSAssert(self.presentingViewController != nil, @"presenting view controller is nil");
-
+    
     self.direction = direction;
-
+    
     [self setupContentView];
     
     [self placeContentViewToInitialPosition];
@@ -137,7 +121,7 @@ static const char kFlyOverMenuControllerContentHeightKey;
     {
         [self placeContentViewToTargetPosition];
     };
-
+    
     if (animated) {
         [UIView animateWithDuration:MLFlyOverMenuControllerAnimationDuration animations:animations];
     } else {
@@ -157,13 +141,13 @@ static const char kFlyOverMenuControllerContentHeightKey;
     }
     
     void (^undeployCompletionBlock)(void) = [self undeployViewController:self.contentViewController
-                                          fromHostViewController:self.presentingViewController];
+                                                  fromHostViewController:self.presentingViewController];
     void (^completionBlock)() = ^()
     {
         [self.contentView removeFromSuperview];
         self.contentView = nil;
     };
-
+    
     void (^animations)() = ^()
     {
         [self placeContentViewToInitialPosition];
@@ -189,15 +173,15 @@ static const char kFlyOverMenuControllerContentHeightKey;
 - (void)setupContentView
 {
     CGRect presentingFrame = self.presentingViewController.view.bounds;
-
+    
     CGFloat contentWidth = self.contentViewController.contentWidthInFlyOverMenu.floatValue;
     
     if (contentWidth <= 0) {
         contentWidth = presentingFrame.size.width;
     }
-
+    
     contentWidth -= self.contentInsets.left + self.contentInsets.right;
-
+    
     CGFloat contentHeight = self.contentViewController.contentHeightInFlyOverMenu.floatValue;
     BOOL staticHeight = (contentHeight > 0);
     
@@ -206,7 +190,7 @@ static const char kFlyOverMenuControllerContentHeightKey;
     }
     
     contentHeight -= self.contentInsets.top + self.contentInsets.bottom;
-
+    
     self.contentView = [[UIView alloc] initWithFrame:CGRectMake(0,0,contentWidth,contentHeight)];
     self.contentView.autoresizingMask = 0;
     self.contentView.autoresizingMask = [self viewAutoresizingBasedOnDirection:self.direction staticHeight:staticHeight];
@@ -271,7 +255,7 @@ static const char kFlyOverMenuControllerContentHeightKey;
     
     viewX += self.contentInsets.left + self.contentInsets.right;
     viewY += self.contentInsets.top + self.contentInsets.bottom;
-
+    
     contentViewFrame.origin = CGPointMake(viewX, viewY);
     self.contentView.frame = contentViewFrame;
 }
@@ -283,7 +267,7 @@ static const char kFlyOverMenuControllerContentHeightKey;
     
     screenSize.width -= self.contentInsets.left + self.contentInsets.right;
     screenSize.height -= self.contentInsets.top + self.contentInsets.bottom;
-
+    
     CGFloat viewX = 0, viewY = 0;
     
     switch (self.direction) {
@@ -330,11 +314,21 @@ static const char kFlyOverMenuControllerContentHeightKey;
     controllerView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     controllerView.frame = frame;
     
-    if ([viewController respondsToSelector:@selector(automaticallyAdjustsScrollViewInsets)] && [controllerView isKindOfClass:[UIScrollView class]]) {
-        BOOL adjust = (BOOL)[viewController performSelector:@selector(automaticallyAdjustsScrollViewInsets) withObject:nil];
+    if ([viewController respondsToSelector:@selector(automaticallyAdjustsScrollViewInsets)]) {
+        UIViewController *adjustViewController = viewController;
+        
+        if ([adjustViewController isKindOfClass:UINavigationController.class]) {
+            adjustViewController = [(UINavigationController *)adjustViewController topViewController];
+        }
+        
+        BOOL adjust = (BOOL)[adjustViewController performSelector:@selector(automaticallyAdjustsScrollViewInsets) withObject:nil];
         
         if (adjust) {
-            [(id)controllerView setContentInset:UIEdgeInsetsMake(statusBarAdjustment(self.contentView), 0, 0, 0)];
+            CGRect statusBarFrame = [[UIApplication sharedApplication] statusBarFrame];
+            CGFloat statusBarHeight = fminf(statusBarFrame.size.width, statusBarFrame.size.height);
+            CGFloat adjustment = hostViewController.navigationController.navigationBar.frame.size.height + statusBarHeight;
+            
+            [(id)adjustViewController.view setContentInset:UIEdgeInsetsMake(adjustment, 0, 0, 0)];
         }
     }
     
@@ -368,7 +362,7 @@ static const char kFlyOverMenuControllerContentHeightKey;
 - (void)perform
 {
     UIViewController *contentViewController = self.destinationViewController;
-
+    
     MLFlyOverMenuController *flyOver = [self.sourceViewController flyOverMenuController];
     
     flyOver.contentViewController = contentViewController;

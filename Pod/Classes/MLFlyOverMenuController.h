@@ -44,10 +44,6 @@ typedef enum : NSUInteger {
 
 #pragma mark - Segues
 
-@interface MLFlyOverMenuControllerSetContentControllerSegue : UIStoryboardSegue
-
-@end
-
 extern NSString * const MLFlyOverMenuPresentSegueLeftIdentifier;//ml_from_left
 extern NSString * const MLFlyOverMenuPresentSegueRightIdentifier;//ml_from_right
 extern NSString * const MLFlyOverMenuPresentSegueTopIdentifier;//ml_from_top
