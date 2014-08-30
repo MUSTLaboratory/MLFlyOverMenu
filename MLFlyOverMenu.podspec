@@ -1,8 +1,8 @@
 Pod::Spec.new do |s|
   s.name             = "MLFlyOverMenu"
   s.version          = "0.1.0"
-  s.summary          = "A lightweight and convenient way of presenting a view controller inspired by UIPopoverController and SWRevealViewController. Highly customizable. Full storyboard support."
-  s.description      = ""
+  s.summary          = "A lightweight and convenient way of presenting a view controller inspired by UIPopoverController and SWRevealViewController."
+  s.description      = "A lightweight and convenient way of presenting a view controller inspired by UIPopoverController and SWRevealViewController. Highly customizable. Full initialization and customization from a storyboard."
   s.homepage         = "http://mustlab.ru"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
