@@ -355,21 +355,6 @@ static const char kFlyOverMenuControllerContentHeightKey;
 
 @end
 
-#pragma mark - MLFlyOverMenuControllerSetContentControllerSegue Class
-
-@implementation MLFlyOverMenuControllerSetContentControllerSegue : UIStoryboardSegue
-
-- (void)perform
-{
-    UIViewController *contentViewController = self.destinationViewController;
-    
-    MLFlyOverMenuController *flyOver = [self.sourceViewController flyOverMenuController];
-    
-    flyOver.contentViewController = contentViewController;
-}
-
-@end
-
 #pragma mark - MLFlyOverMenuControllerPresentSegue Class
 
 NSString * const MLFlyOverMenuPresentSegueLeftIdentifier = @"ml_from_left";
