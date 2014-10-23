@@ -19,8 +19,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    //self.flyOverMenuController = [MLFlyOverMenuController ]
 }
 
 - (void)didReceiveMemoryWarning
