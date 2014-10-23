@@ -7,7 +7,7 @@
 
 ## About 
 
-A simple flyover menu, which covers your view controller's content. It has configurable transitions and fully supports initialization from Xcode without a line of code.
+A simple flyover menu, which covers your view controller's content. It has configurable transitions and fully supports initialization from the Xcode Interface Builder without a line of code.
 
 ## Demo
 ![mlflyover_demo.gif](https://bitbucket.org/repo/orne5A/images/3618477360-mlflyover_demo.gif)
