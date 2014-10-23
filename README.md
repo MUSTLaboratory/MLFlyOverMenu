@@ -18,12 +18,19 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
+iOS 6+ (compatible with iOS 8)
+Xcode 5/6
+
 ## Installation
 
 MLFlyOverMenu is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
     pod "MLFlyOverMenu"
+
+## Feedback
+
+Issues and pull requests are welcome. Thank you for using this control in your app.
 
 ## Author
 
