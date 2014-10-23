@@ -335,7 +335,9 @@ static const char kFlyOverMenuControllerContentHeightKey;
             CGFloat statusBarHeight = fminf(statusBarFrame.size.width, statusBarFrame.size.height);
             CGFloat adjustment = hostViewController.navigationController.navigationBar.frame.size.height + statusBarHeight;
             
-            [(id)adjustViewController.view setContentInset:UIEdgeInsetsMake(adjustment, 0, 0, 0)];
+            if ([adjustViewController.view isKindOfClass:UIScrollView.class]) {
+                [(id)adjustViewController.view setContentInset:UIEdgeInsetsMake(adjustment, 0, 0, 0)];
+            }
         }
     }
     

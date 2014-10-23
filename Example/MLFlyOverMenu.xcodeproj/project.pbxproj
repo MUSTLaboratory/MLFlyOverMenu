@@ -23,7 +23,6 @@
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
-		D06E996919B0DCAE000955D9 /* MLFlyOverMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = D06E996819B0DCAE000955D9 /* MLFlyOverMenuController.m */; };
 		F521736E088E4C33948E2752 /* libPods-MLFlyOverMenu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1988DF2EBC654B85BB47F14E /* libPods-MLFlyOverMenu.a */; };
 /* End PBXBuildFile section */
 
@@ -355,7 +354,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6003F59E195388D20070C39A /* MLAppDelegate.m in Sources */,
-				D06E996919B0DCAE000955D9 /* MLFlyOverMenuController.m in Sources */,
 				6003F5A7195388D20070C39A /* MLViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 			);
