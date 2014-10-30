@@ -1,6 +1,6 @@
 # MLFlyOverMenu
 
-[![CI Status](http://img.shields.io/travis/MUSTLab/MLFlyOverMenu.svg?style=flat)](https://travis-ci.org/MUSTLab/MLFlyOverMenu)
+[![CI Status](http://img.shields.io/travis/MUSTLaboratory/MLFlyOverMenu.svg?style=flat)](https://travis-ci.org/MUSTLaboratory/MLFlyOverMenu)
 [![Version](https://img.shields.io/cocoapods/v/MLFlyOverMenu.svg?style=flat)](http://cocoadocs.org/docsets/MLFlyOverMenu)
 [![License](https://img.shields.io/cocoapods/l/MLFlyOverMenu.svg?style=flat)](http://cocoadocs.org/docsets/MLFlyOverMenu)
 [![Platform](https://img.shields.io/cocoapods/p/MLFlyOverMenu.svg?style=flat)](http://cocoadocs.org/docsets/MLFlyOverMenu)
